@@ -1,0 +1,12 @@
+# Site settings
+title: Martin Josefsson, Javascript & Ruby freelancer
+email: hello@martinjosefsson.com
+description: > # this means to ignore newlines until "baseurl:"
+  I develop great apps and websites in the different Javascript frameworks, Ruby, Rails & Node. Based in Berlin, Germany.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "martinjosefsson.com" # the base hostname & protocol for your site
+twitter_username: axhlf
+github_username:  fromheten
+
+# Build settings
+markdown: kramdown
