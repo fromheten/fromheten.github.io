@@ -1,6 +1,24 @@
 section.presentation {
   width: 50%;
 }
+.call-to-action {
+  border: 1px solid $brand-color;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.5em;
+
+  &:hover {
+    text-decoration: none;
+    color: darken($brand-color, 20%);
+    border: 1px solid darken($brand-color, 20%);
+    box-shadow: 1px 1px 1px $grey-color;
+    transition: all 0.1s;
+  }
+  &:active {
+    color: $green-brand-color-light;
+    border: 1px solid darken($green-brand-color-light, 20%);
+  }
+}
 img.profile-picture {
   float: right;
   margin: 5px;
