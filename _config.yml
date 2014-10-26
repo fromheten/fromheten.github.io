@@ -2,7 +2,8 @@
 title: Martin Josefsson, Javascript & Ruby Freelancer Developer
 email: hello@martinjosefsson.com
 description: > # this means to ignore newlines until "baseurl:"
-  I develop great apps and websites in the different Javascript frameworks, Ruby, Rails & Node. Based in Berlin, Germany.
+  Years of experience helping companies build web & software products.
+  I develop great apps and websites in the different Javascript frameworks, Ruby, Rails & Node, as well as implementing responsive design with HTML5 & CSS3. Based in Berlin, Germany.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "martinjosefsson.com" # the base hostname & protocol for your site
 twitter_username: axhlf
