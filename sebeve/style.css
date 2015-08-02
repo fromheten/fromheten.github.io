@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+header {
+  background-color: rgba(50,50,50,0.8);
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+img.instapic {
+  width: 100%;
+}
+
+.subtext {
+  display:flex;
+  align-items:center;
+  height:150px;
+  margin-bottom: 5em;
+  background: rgba(0,0,0,0.1);
+  white-space: pre-wrap;
+}
+.caption {
+  margin-left: 2em;
+  margin-right: 2em;
+}
