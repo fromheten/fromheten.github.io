@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   if (!App.loggedIn) {
     window.location.replace(
-      "https://instagram.com/oauth/authorize/?client_id=0fbae02a7bc04f3b8020a40caa6dd461&redirect_uri=http://localhost:3000/&response_type=token"
+      "https://instagram.com/oauth/authorize/?client_id=0fbae02a7bc04f3b8020a40caa6dd461&redirect_uri=http://www.martinjosefsson.com/sebeve/&response_type=token"
     );
   } else {
     App.accessToken = window.location.hash.match(/\d.*/)[0];
