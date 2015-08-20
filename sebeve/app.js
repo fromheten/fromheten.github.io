@@ -2,7 +2,10 @@ $(document).ready(function () {
   console.log("Welcome to SebEve!");
 
   App = {
-    loggedIn: !!window.location.hash
+    loggedIn: !!window.location.hash,
+    currentDisplayedPhotoTimestamp: 0,
+    lastDownloadTimestamp: 0,
+    currentPhotoIndex: 0
   };
 
   if (!App.loggedIn) {
@@ -12,67 +15,76 @@ $(document).ready(function () {
   } else {
     App.accessToken = window.location.hash.match(/\d.*/)[0];
   }
+  var query = "https://api.instagram.com/v1/tags/dannike/media/recent?access_token=" + App.accessToken;
 
-  var query = "https://api.instagram.com/v1/tags/sweden/media/recent?access_token=" + App.accessToken;
+  function main () {
+    downloadAllImages().then(function (res) {
+      console.log(res.data);
+      App.photos = res.data;
 
-  var getAndDisplayImages = function getAndDisplayImages () {
-    $.ajax({
+      displayPhoto(res.data[0]);
+
+      setInterval(function () {
+        if (App.isThereNewPhoto) {
+          downloadAllImages().then(function (res) {
+            console.log("yo");
+            App.currentPhotoIndex = 0;
+            displayPhoto(res.data[0]);
+          });
+        } else {
+          if (App.currentPhotoIndex <= 20) {
+            App.currentPhotoIndex++;
+            displayPhoto(App.photos[App.currentPhotoIndex]);
+            console.log("App", App);
+          } else {
+            console.log("currentPhotoIndex reset");
+            App.currentPhotoIndex = -1;
+          }
+        }
+      }, 5000);
+
+      setInterval(function () {
+        checkForNewPhotos();
+        setAppHeightToDeviceHeight();
+      }, 5000);
+    });
+  }
+  main();
+
+  var setAppHeightToDeviceHeight = function setAppHeightToDeviceHeight () {
+    $("img").css({
+      height: window.innerHeight,
+      width: "auto"
+    });
+  };
+
+  var checkForNewPhotos = function checkForNewPhotos () {
+    downloadAllImages().then(function (res) {
+      var lastPhotoTimestamp = App.photos[0].created_time;
+      App.isThereNewPhoto = (res.data[0].created_time > lastPhotoTimestamp);
+      console.log(res.data[0].created_time, lastPhotoTimestamp);
+      console.log("new photo? ", App.isThereNewPhoto);
+    });
+  };
+
+  function downloadAllImages () {
+    return $.ajax({
       url: query,
       jsonp: "callback",
       dataType: "jsonp",
+    });
+  }
 
-      success: function (res) {
-        App.data = res.data;
-        console.log("New data: ", res.data);
-
-        constructImages(res.data).forEach(function (image) {
-          document.body.appendChild(image);
-        });
-
+  var displayPhoto = function displayPhoto (photoObj) {
+    setAppHeightToDeviceHeight();
+    var img = document.createElement("img");
+    img.src = photoObj.images.standard_resolution.url;
+    img.className = "instapic";
+    $('img').fadeOut({
+      done: function () {
+        $(".content").hide().html(img).fadeIn();
+        setAppHeightToDeviceHeight();
       }
     });
   };
-  getAndDisplayImages();
-
-  var constructImages = function constructImages (imageColl) {
-    return imageColl.map(function (item) {
-      console.log(item);
-      var pictureFrame = document.createElement("div");
-      pictureFrame.className = "pictureFrame";
-
-      var img = document.createElement("img");
-      img.src = item.images.standard_resolution.url;
-      img.className = "instapic";
-
-      var picLink = document.createElement("a");
-      picLink.href = item.link;
-      picLink.appendChild(img);
-
-      var subtext = document.createElement("div");
-      subtext.className = "subtext";
-
-      var userPic = document.createElement("img");
-      userPic.src = item.user.profile_picture;
-      userPic.className = "profilePicture";
-
-      subtext.appendChild(userPic);
-
-      var caption = document.createElement("span");
-      caption.className = "caption";
-      caption.textContent = item.caption.text;
-      subtext.appendChild(caption);
-
-      var realName = document.createElement("span");
-      realName.textContent = item.user.real_name;
-      realName.className = "real_name";
-      subtext.appendChild(realName);
-
-      pictureFrame.appendChild(picLink);
-      pictureFrame.appendChild(subtext);
-      return pictureFrame;
-    });
-  };
-
-
-
 });
