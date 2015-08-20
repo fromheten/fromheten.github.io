@@ -17,3 +17,10 @@ img.instapic {
   margin: 0 auto;
   display: block;
 }
+div {
+  color: white;
+  text-align: center;
+}
+code {
+  font-size: 1.5em;
+}

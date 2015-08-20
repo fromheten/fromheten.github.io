@@ -5,7 +5,7 @@ $(document).ready(function () {
     loggedIn: !!window.location.hash,
     currentDisplayedPhotoTimestamp: 0,
     lastDownloadTimestamp: 0,
-    currentPhotoIndex: 0
+    currentPhotoIndex: 0,
   };
 
   if (!App.loggedIn) {
@@ -15,7 +15,8 @@ $(document).ready(function () {
   } else {
     App.accessToken = window.location.hash.match(/\d.*/)[0];
   }
-  var query = "https://api.instagram.com/v1/tags/dannike/media/recent?access_token=" + App.accessToken;
+
+  var query = "https://api.instagram.com/v1/tags/sebeve2015/media/recent?access_token=" + App.accessToken;
 
   function main () {
     downloadAllImages().then(function (res) {
@@ -27,42 +28,45 @@ $(document).ready(function () {
       setInterval(function () {
         if (App.isThereNewPhoto) {
           downloadAllImages().then(function (res) {
-            console.log("yo");
+            console.log("displaying photo 0");
             App.currentPhotoIndex = 0;
             displayPhoto(res.data[0]);
           });
         } else {
           if (App.currentPhotoIndex <= 20) {
             App.currentPhotoIndex++;
+            console.log("displaying photo ", App.currentPhotoIndex);
             displayPhoto(App.photos[App.currentPhotoIndex]);
-            console.log("App", App);
           } else {
             console.log("currentPhotoIndex reset");
             App.currentPhotoIndex = -1;
           }
         }
-      }, 5000);
+      }, 10000);
 
       setInterval(function () {
         checkForNewPhotos();
         setAppHeightToDeviceHeight();
-      }, 5000);
+      }, 4500);
     });
   }
   main();
 
   var setAppHeightToDeviceHeight = function setAppHeightToDeviceHeight () {
     $("img").css({
-      height: window.innerHeight,
+      height: window.innerHeight - 30,
       width: "auto"
     });
   };
+  $(window).resize(function() {
+    setAppHeightToDeviceHeight();
+  });
 
   var checkForNewPhotos = function checkForNewPhotos () {
     downloadAllImages().then(function (res) {
       var lastPhotoTimestamp = App.photos[0].created_time;
       App.isThereNewPhoto = (res.data[0].created_time > lastPhotoTimestamp);
-      console.log(res.data[0].created_time, lastPhotoTimestamp);
+      App.photos = res.data;
       console.log("new photo? ", App.isThereNewPhoto);
     });
   };
