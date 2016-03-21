@@ -3,7 +3,7 @@ title: Martin Josefsson, Freelance Clojure, Javascript & Ruby developer
 email: hello@martinjosefsson.com
 description: > # this means to ignore newlines until "baseurl:"
   Years of experience helping companies build web & software products.
-  I develop great apps and websites in the different Javascript frameworks, Ruby, Rails & Node, as well as implementing responsive design with HTML5 & CSS3. Based in Berlin, Germany.
+  <br>I develop apps, web services, bitcoin blockchain services, et cetera in Clojure, Javascript (Node.js & Frontend), Ruby on Rails and more. Based in Amsterdam, The Netherlands.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "martinjosefsson.com" # the base hostname & protocol for your site
 twitter_username: axhlf
