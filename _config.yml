@@ -1,11 +1,10 @@
 # Site settings
-title: Martin Josefsson, Freelance Clojure, Javascript & Ruby developer
+title: Martin Josefsson, programs in Clojure, Elm, Javascript & more
 email: hello@martinjosefsson.com
 description: > # this means to ignore newlines until "baseurl:"
-  Years of experience helping companies build web & software products.
-  <br>I develop web services, Bitcoin & blockchain services, et cetera in Clojure, Javascript (Node.js & Frontend), Ruby on Rails and more. Based between London, Berlin, Amsterdam and Tokyo.
+  Let us talk about hashes. I make blockchain programs, and am an avid user of functional programming
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "martinjosefsson.com" # the base hostname & protocol for your site
+url: "http://www.martinjosefsson.com" # the base hostname & protocol for your site
 twitter_username: axhlf
 github_username:  fromheten
 
