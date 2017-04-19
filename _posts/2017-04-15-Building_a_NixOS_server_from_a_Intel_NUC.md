@@ -21,13 +21,15 @@ Friday night I had made the decision to go with the NUC. Luckily, electronics st
 <img src="/images/nuc-nixos/akihabara.jpg"
      alt="Akihabara is a strange place..." />
 
-You need to buy a SSD (any of the M.2 form factor) as well as a memory, of the DDR4 form factor. I got one 16GB memory and 1TB SSD. Building the device is easy, just unscrew (normal cross type screws) the bottom plate, take the lid of, and snap in the components.
+You need to buy a SSD (any of the M.2 form factor) as well as a memory, of the DDR4 form factor. I got one 16GB memory and 1TB SSD.
 
 # Step 1: Assembly
 <img src="/images/nuc-nixos/parts.jpg"
      alt="Parts laid out before assembly" />
 
 Picked out a keyboard with built in pointing device. It's not the best keyboard, but pretty portable and wireless with a USB dongle.
+
+Building the device is easy, just unscrew (normal cross type screws) the bottom plate, take the lid of, and snap in the components.
 
 # Step 2: Making a bootable NixOS USB stick
 Downloaded the [NixOS Graphical Live CD](https://nixos.org/nixos/download.html).
@@ -49,7 +51,7 @@ Create a 500MB partition labeled "boot", and an ext4 partition of the rest.
 
 # Step 3.1: Encrypted file system
 
-You [should use](https://www.eff.org/deeplinks/2011/12/newyears-resolution-full-disk-encryption-every-computer-you-own) [full disk encryption](https://www.eff.org/document/defending-privacy-us-border-guide-travelers-carrying-digital-devices). In many operating such as Ubuntu and MacOS it's as easy as checking a box during setup. Here, we need to run a few commands. This sections credits are due to [Martijn Vermaat](https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134).
+You [should use](https://www.eff.org/deeplinks/2011/12/newyears-resolution-full-disk-encryption-every-computer-you-own) [full disk encryption](https://www.eff.org/document/defending-privacy-us-border-guide-travelers-carrying-digital-devices). In many operating systems such as Ubuntu and MacOS it's as easy as checking a box during setup. Here, we need to run a few commands. This sections credits are due to [Martijn Vermaat](https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134).
 
 * Set up the encrypted LUKS partition and open it for editing
 
