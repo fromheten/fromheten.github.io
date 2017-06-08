@@ -6,7 +6,7 @@ comments: true
 categories: Linux NixOS Intel NUC server
 ---
 
-Living with no more possessions than fit in a backpack & checked in luggage is easy, if all your work and media consumptions lives in a laptop.
+Living with no more possessions than fit in a backpack & checked in luggage is easy, if all your work and media consumption lives in a laptop.
 That's how I've lived for the last 5 years - relocating between Asia and Europe every few months.
 
 The day has come though, when I need to have a server. I want it's hardware so that I have full control over it.
@@ -45,7 +45,7 @@ You're greeted with a menu from the bootloader.
 
 In the terminal, type (as instructed) `# systemctl start display-manager` to get a GUI. Useful if you need to set up Wi-Fi during installation, or browse the web.
 
-Open GParted from the desktop, and select in the menu "Partition" "New". I use `gpt` as for partition table.
+Open GParted from the desktop, and select in the menu "Partition" "New". Select `gpt` for partition table.
 
 Create a 500MB partition labeled "boot", and an ext4 partition of the rest.
 
@@ -60,7 +60,7 @@ You [should use](https://www.eff.org/deeplinks/2011/12/newyears-resolution-full-
 # cryptsetup luksOpen /dev/sda2 enc-pv
 ```
 
-* We create two logical volumes, a 8GB swap partition and the rest will be our root filesystem
+* We create two logical volumes, an 8GB swap partition and the rest will be our root filesystem
 
 ```
 # pvcreate /dev/mapper/enc-pv
@@ -89,7 +89,7 @@ You are now ready to mount and install NixOS.
 Generate the NixOS configuration for your setup: `# nixos-generate-config --root /mnt`.
 
 After having created `/mnt/etc/configuration.nix`, add these three lines at line 13.
-At this point I wanted to use Emacs - so in a terminal you can just `# nix-env -p emacs` to create a shell with emacs available, and in the new shell just run `emacs`.
+At this point I wanted to use Emacs - so in a terminal you can just `# nix-shell -p emacs` to create a shell with emacs available, and in the new shell just run `emacs`.
 
 ```
 boot.loader.grub.enable = true;
@@ -125,7 +125,7 @@ Remember that you when something goes wrong, you can just wipe your disk and sta
 
 Installing NixOS was **not fun**. It has been a long time since last I had to search the web for HOTWOs on how to get Linuxes running. I can't remember when last I had to fiddle with drivers (even if NixOS makes it as easy as adding two strings to a list).
 
-After that is done though, it's really a great system. There is real power in functional & declarative programming, and being able to create your system from a simple and pure function definition (`/etc/nixos/configuration.nix`) is seriously cool. Editing that file and running `# nixos-rebuild switch` to "make it happen" is great. I recommend it to anyone who has the patience with the tedous and somewhat frustrating process of setting it up.
+After that is done though, it's really a great system. There is real power in functional & declarative programming, and being able to create your system from a simple and pure function definition (`/etc/nixos/configuration.nix`) is seriously cool. Editing that file and running `# nixos-rebuild switch` to "make it happen" is great. I recommend it to anyone who has the patience with the tedious and somewhat frustrating process of setting it up.
 
 # Links that helped me
 
