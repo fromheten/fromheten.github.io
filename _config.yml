@@ -1,6 +1,5 @@
 # Site settings
-title: Martin Josefsson, programs in Clojure, Elm, Javascript & more
-email: hello@martinjosefsson.com
+title: Martin Josefsson, indie programmer
 description: > # this means to ignore newlines until "baseurl:"
   Let us talk about hashes. I make blockchain programs, and am an avid user of functional programming
 baseurl: "" # the subpath of your site, e.g. /blog/

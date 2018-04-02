@@ -2,56 +2,42 @@
 layout: frontpage
 ---
 
-<img src="images/profile.jpg" alt="Picture of me & my best friend" class="profile-picture">
 <section class="presentation">
   <h1>
     Martin Josefsson
   </h1>
+
   <h2>
-
-    Indie programmer, writing a lot of Clojure & Elm programs.
+    Indie programmer
   </h2>
-  <h3>
-    Based between
-    <ul>
-      <li>
-        Dannike, Sweden
-      </li>
-      <li>
-        London, UK
-      </li>
-      <li>
-        Berlin, Germany
-      </li>
-      <li>
-        Tokyo, Japan
-      </li>
-      <li>
-        Or wherever good programs are to be assembled.
-      </li>
-    </ul>
-  </h3>
 
-  <p>
-    <a href="mailto:{{ site.email }}?subject=Project" class="call-to-action">
-      Let's talk
-      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-           width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-        <g>
-          <path d="M1.285,11.671C0.6,11.934,0.114,12.55,0.017,13.277c-0.096,0.728,0.213,1.449,0.806,1.88l6.492,4.724L30.374,1.74
-                   L9.985,21.826l8.875,6.458c0.565,0.411,1.293,0.534,1.964,0.33c0.67-0.204,1.204-0.712,1.444-1.368l9.494-25.985
-                   c0.096-0.264,0.029-0.559-0.171-0.756c-0.2-0.197-0.495-0.259-0.758-0.158L1.285,11.671z"/>
-          <path d="M5.774,21.451l0.055,0.301l1.26,6.889c0.094,0.512,0.436,0.941,0.912,1.148c0.476,0.206,1.025,0.162,1.461-0.119
-                   c1.755-1.132,4.047-2.634,3.985-2.722L5.774,21.451z"/>
-        </g>
-      </svg>
-    </a>
-  </p>
+  <h3>
+    Sometimes available around
+  </h3>
+  <ul>
+    <li>
+      Dannike, Sweden
+    </li>
+    <li>
+      London, UK
+    </li>
+    <li>
+      Berlin, Germany
+    </li>
+    <li>
+      Tokyo, Japan
+    </li>
+    <li>
+      Or wherever good programs need to be assembled
+    </li>
+  </ul>
+
   <p>
     <a href="/martin-josefsson-gpg-key.asc">
       🔐 GPG public key
     </a>
   </p>
+
   <p class="second-call-to-action">
     <a href="/martin-josefsson-developer-resume.pdf">
       🛳 Past projects (résumé)
@@ -59,9 +45,73 @@ layout: frontpage
   </p>
 
   <p>
-    <a href="/blog.html">
-      Blog &rarr;
-    </a>
+    <h2>
+      Blog
+    </h2>
+    <ul>
+      {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
   </p>
 
+
+  <section>
+    <h2>
+      Get in touch
+    </h2>
+    <ul class="contact-list">
+      <li>
+        <a href="https://bitmessage.org">
+          Bitmessage address:
+        </a>
+        &nbsp;BM-NBGXfRBmQGEadfoLf7xrgqY11qNviyzk
+      </li>
+      <li>
+        <a href="martin-josefsson-developer-resume.pdf">
+          Project List / CV
+        </a>
+      </li>
+    </ul>
+
+    <ul class="social-media-list">
+      {% if site.github_username %}
+      <li>
+        <a href="https://github.com/{{ site.github_username }}">
+          <span class="socicon socicon-github">
+          </span>
+
+          <span class="username">Github: {{ site.github_username }}</span>
+        </a>
+      </li>
+      {% endif %}
+
+      {% if site.twitter_username %}
+      <li>
+        <a href="https://twitter.com/{{ site.twitter_username }}">
+          <span class="socicon socicon-twitter">
+          </span>
+
+          <span class="username">Twitter: @{{ site.twitter_username }}</span>
+        </a>
+      </li>
+      {% endif %}
+
+      <li><a href="https://www.xing.com/profile/Martin_Josefsson"><span class="username">
+            <span class="socicon socicon-xing"></span>
+            <span class="username">
+              Xing
+            </span>
+      </span></a></li>
+
+      <li><a href="http://de.linkedin.com/pub/martin-josefsson/62/175/473/">
+          <span class="socicon socicon-linkedin"></span>
+          <span class="username">LinkedIn</span>
+      </a></li>
+    </ul>
+  </section>
 </section>
