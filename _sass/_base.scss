@@ -1,20 +1,9 @@
-body {
-    font-family: Helvetica, Arial, sans-serif;
-}
-a {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
 img {
     max-width: 100%;
     vertical-align: middle;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-}
 pre,
 code {
     background-color: #eef;
+    padding: 0.1rem;
 }
