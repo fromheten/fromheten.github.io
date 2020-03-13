@@ -8,6 +8,8 @@ categories: parser compiler interpreter programming language
 
 Here follows a simple parser for S-expressions into an OCaml data structure. I'm publishing it in hopes that it may be useful for someone needing a no-nonsense parser, and for myself to refer to in playing with programming languages.
 
+It's a modified port of a simple parser written by Jesper Oskarsson in and for his language [Reuse](https://github.com/redien/reuse-lang).
+
 ## Examples
 ```
 'I am a symbol with spaces'
@@ -144,4 +146,22 @@ let s_expression_of_token_list : token list -> s_expression =
 ;; string_of_s_expression
      (s_expression_of_token_list (tokenize "(a b c () () (( ())))"))
 ;; string_of_s_expression (s_expression_of_token_list (tokenize "(() ())"))
+```
+
+### Licence
+Edit: I got a kind email asking me about a licence for this code, so to clarify, you are free to share, modify, and do whatever you wish with this code. You are free to use it under the MIT licence, or whatever.
+
+It was written when I and [Jesper Oskarsson](http://jesperoskarsson.se/) had a hack session in a Friedrichshainer cafe, so he is the one deserving of any honour. Thanks Jesper for all help with compilers :-). For any reader, when venturing into compiler-land, it's a good idea to have a friend in meatspace to discuss the topic with. Happy hacking.
+
+```
+ The MIT License (MIT)
+
+Copyright © 2019 Martin Josefsson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+The software is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
+
 ```
