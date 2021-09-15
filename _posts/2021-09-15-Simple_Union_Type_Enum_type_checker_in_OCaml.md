@@ -10,6 +10,12 @@ Here follows a very simple language which has Tagged Union types (aka. Enums), a
 
 The code is released under the MIT licence.
 
+It does not contain Lambdas or any fancier data types than Unit and Int. This is because I want to show the very simplest possible implementation of Tagged Unions (aka. Enums).
+
+Adding pattern matching onto this is very simple. To do so, define another possible expr, and call it `Match of expr * (string * expr) list`, where the first `expr` is the thing to match, and the list is the cases and the "then" expressions. `eval` shall be extended to, when given a `Match`, search the case list for a case with a name matching the tag given as the first argument of `Match`.
+
+If you want to talk compilers or see a bug, shoot me an email at `compilers` < at > `martinjosefsson.com`.
+
 ```ocaml
 type typ =
   (* Two base types, just to have something to play with *)
